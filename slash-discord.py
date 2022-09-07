@@ -122,6 +122,6 @@ async def slash2(interaction: discord.Interaction, 아이디: str, 답변: str):
 
 
 
-access_token = os.environ["BOT_TOKEN"]
+access_token = os.environ['BOT_TOKEN']
 
 client.run(access_token)
