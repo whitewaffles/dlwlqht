@@ -1,1 +1,1 @@
-worker: python dlwlqht.py
+worker: python slash-discord.py
