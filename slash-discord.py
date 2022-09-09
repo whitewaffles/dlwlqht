@@ -83,10 +83,12 @@ async def slash2(interaction: discord.Interaction, 문의: str):
     icon_url="https://imgur.com/jtXT6b3.jpeg")
     await interaction.response.send_message(embed=embed)
     
-
-    user = await client.fetch_user("786487900291596328")
-    await user.send("유저 아이디 **{}** / 문의 내용 **{}**".format(user.id, 문의))
     
+
+
+
+    users = await client.fetch_user("786487900291596328")
+    await users.send("유저 아이디 {}  / 문의 내용 {}".format(interaction.user.id, 문의))
 
 
 
@@ -100,7 +102,7 @@ async def slash2(interaction: discord.Interaction, 아이디: str, 답변: str):
 
 
 
-    await interaction.response.send_message(f"답변 성공") 
+    await interaction.response.send_message(f"✅") 
 
 
 
