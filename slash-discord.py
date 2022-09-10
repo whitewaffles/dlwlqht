@@ -21,7 +21,7 @@ class aclient(discord.Client):
             self.synced = True
         print(f'{self.user}이 시작되었습니다')  #  봇이 시작하였을때 터미널에 뜨는 말
         game = discord.Game('이지봇')          # ~~ 하는중
-        await self.change_presence(status=discord.Status.idle, activity=game)
+        await self.change_presence(status=discord.Status.online, activity=game)
 
 
 client = aclient()
