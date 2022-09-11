@@ -18,6 +18,7 @@ import discord, datetime
 import interactions
 from discord.ext import tasks
 from itertools import cycle
+import os
 
 
 class aclient(discord.Client):
