@@ -1,12 +1,23 @@
 import discord
-import discord
 from discord import app_commands
 from discord.ext.commands import Bot
-import interactions
+from youtube_dl import YoutubeDL
+import bs4
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from discord.utils import get
+from discord import FFmpegPCMAudio
 import asyncio
-
-import os
-
+import time
+import random
+import requests
+from discord.ext import commands
+from discord_buttons_plugin import  *
+import asyncio, discord
+import discord, datetime
+import interactions
+from discord.ext import tasks
+from itertools import cycle
 
 
 class aclient(discord.Client):
@@ -21,7 +32,35 @@ class aclient(discord.Client):
             self.synced = True
         print(f'{self.user}이 시작되었습니다')  #  봇이 시작하였을때 터미널에 뜨는 말
         game = discord.Game('이지봇')          # ~~ 하는중
-        await self.change_presence(status=discord.Status.online, activity=game)
+        await self.change_presence(status=discord.Status.idle, activity=game)
+        guild_list = client.guilds
+        for i in guild_list:
+            print("서버 ID: {} / 서버 이름: {}".format(i.id, i.name))
+
+
+        print(f"[!] 참가 중인 서버 : {len(client.guilds)}개의 서버에 참여 중\n")
+        guild_list = len(client.guilds)
+        print(guild_list)
+
+    
+        change_status.start()
+        
+client = aclient()
+tree = app_commands.CommandTree(client)
+
+
+
+
+guild_list = len(client.guilds)
+status = cycle(["/ 명령어 지원", "이지 봇(EZ BOT)"])
+
+
+
+@tasks.loop(seconds=5)
+async def change_status():
+    await client.change_presence(activity=discord.Game(next(status)))
+
+
 
 
 client = aclient()
