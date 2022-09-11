@@ -32,15 +32,10 @@ class aclient(discord.Client):
             self.synced = True
         print(f'{self.user}이 시작되었습니다')  #  봇이 시작하였을때 터미널에 뜨는 말
         game = discord.Game('이지봇')          # ~~ 하는중
-        await self.change_presence(status=discord.Status.idle, activity=game)
+        await self.change_presence(status=discord.Status.online, activity=game)
         guild_list = client.guilds
         for i in guild_list:
-            print("서버 ID: {} / 서버 이름: {}".format(i.id, i.name))
-
-
-        print(f"[!] 참가 중인 서버 : {len(client.guilds)}개의 서버에 참여 중\n")
-        guild_list = len(client.guilds)
-        print(guild_list)
+            
 
     
         change_status.start()
