@@ -21,6 +21,7 @@ from itertools import cycle
 import os
 
 
+
 class aclient(discord.Client):
     def __init__(self):
         super().__init__(intents = discord.Intents.default())
@@ -34,33 +35,20 @@ class aclient(discord.Client):
         print(f'{self.user}이 시작되었습니다')  #  봇이 시작하였을때 터미널에 뜨는 말
         game = discord.Game('이지봇')          # ~~ 하는중
         await self.change_presence(status=discord.Status.online, activity=game)
-        guild_list = client.guilds
-        for i in guild_list:
-            
-
-    
-        change_status.start()
-        
-client = aclient()
-tree = app_commands.CommandTree(client)
-
-
-
-
-guild_list = len(client.guilds)
-status = cycle(["/ 명령어 지원", "이지 봇(EZ BOT)"])
-
-
-
-@tasks.loop(seconds=5)
-async def change_status():
-    await client.change_presence(activity=discord.Game(next(status)))
-
-
 
 
 client = aclient()
 tree = app_commands.CommandTree(client)
+
+
+
+
+
+
+
+
+
+
 
 
 @tree.command(name = '따라하기',description='이지가 대화를 따라 할 수 있다')
@@ -143,10 +131,3 @@ async def slash2(interaction: discord.Interaction, 아이디: str, 답변: str):
 
     user = await client.fetch_user("{}".format(아이디))
     await user.send(embed=embed)
-    
-
-
-
-access_token = os.environ['BOT_TOKEN']
-
-client.run(access_token)
