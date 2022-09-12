@@ -131,3 +131,8 @@ async def slash2(interaction: discord.Interaction, 아이디: str, 답변: str):
 
     user = await client.fetch_user("{}".format(아이디))
     await user.send(embed=embed)
+    
+    
+    
+    access_token = os.environ["BOT_TOKEN"]
+    client.run(access_token)
